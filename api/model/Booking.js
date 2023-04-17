@@ -5,8 +5,8 @@ export default class Booking {
    * @constructor
    *
    * @param {String}       id         - Identifiant de la location
-   * @param {String}       rentDate   - Date de location
-   * @param {String}       returnDate - Date de retour
+   * @param {Date}         rentDate   - Date de location
+   * @param {Date}         returnDate - Date de retour
    * @param {Book}         item       - Elément loué
    * @param {User}         user       - Utilisateur qui loue l'élément
    */

@@ -29,7 +29,7 @@ describe('Users', function(){
 
   })
 
-  it('PUT /users/:id should return a success response with founded user', function(done){
+  it('PUT /users/:id should update the user and return a success response with the user', function(done){
 
   })
   it('PUT /users/:id should return not found response if the user does not exist', function(done){
