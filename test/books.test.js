@@ -29,6 +29,14 @@ describe('Books', function () {
             editor: 'ENI',
             langCode: 'ES',
             price: 10.02
+          },
+          {
+            isbn13: "9780782140774",
+            title: "Complete Java 2 Certification Study Guide",
+            authors: "Roberts Simon",
+            editor: "Sybex Inc",
+            langCode: "EN",
+            price: 1
           }
         ]
       });

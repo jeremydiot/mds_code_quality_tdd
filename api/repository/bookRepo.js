@@ -2,7 +2,9 @@
 export default (Book) => {
   const books = [
     new Book('9782744005084', 'UML et C++', 'Richard C. Lee, William M. Tepfenhart', 'CampusPress', 'FR', 29.95),
-    new Book('9782746035966', 'Cree su primer sitio web con dreamweaver 8', 'B.A. GUERIN', 'ENI', 'ES', 10.02)
+    new Book('9782746035966', 'Cree su primer sitio web con dreamweaver 8', 'B.A. GUERIN', 'ENI', 'ES', 10.02),
+    new Book('9780782140774', 'Complete Java 2 Certification Study Guide', 'Roberts Simon', 'Sybex Inc', 'EN', 1.00)
+    
   ];
 
   const listBooks = () => {
