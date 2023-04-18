@@ -24,7 +24,7 @@ export default (Book) => {
   }
 
   const findBook = (id) => {
-    return books.find((book) => book.isbn13 === id);
+    return books.find((book) => book.isbn13 === id) || null;
   }
 
   const updateBook = (id, book) => {

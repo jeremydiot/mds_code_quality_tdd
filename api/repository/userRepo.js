@@ -23,7 +23,7 @@ export default (User) => {
   }
 
   const findUser = (id) => {
-    return users.find(user => user.id === id)
+    return users.find(user => user.id === id) || null
   }
 
   const updateUser = (id ,user) => {

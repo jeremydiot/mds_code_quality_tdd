@@ -3,11 +3,10 @@ import {v4 as uuidv4} from 'uuid';
 
 export default (userRepo) => {
 
-  
-
   const listUsers = (_, res) => {
     res.send({
-      data: userRepo.listUsers().map(user =>{
+      data: userRepo.listUsers().map(u =>{
+        const user = JSON.parse(JSON.stringify(u))
         user.birthDate = moment(user.birthDate).format('YYYY-MM-DD')
         return user
       })
@@ -67,7 +66,8 @@ export default (userRepo) => {
 
     data.id = uuidv4()
 
-    const user = userRepo.createUser(data)
+    const user = JSON.parse(JSON.stringify(userRepo.createUser(data)))
+
     user.birthDate = moment(user.birthDate).format('YYYY-MM-DD')
 
     res.status(201).send({
@@ -127,7 +127,7 @@ export default (userRepo) => {
       })
     }
 
-    const user = userRepo.updateUser(id, data)
+    const user = JSON.parse(JSON.stringify(userRepo.updateUser(id, data)))
 
     
     if(user){
@@ -146,9 +146,10 @@ export default (userRepo) => {
 
   const getUser = (req, res) => {
     const id = req.params.id
-    const user = userRepo.findUser(id)
+    const user = JSON.parse(JSON.stringify(userRepo.findUser(id)))
 
     if(user){
+      user.birthDate = moment(user.birthDate).format('YYYY-MM-DD')
       return res.send({
         data: user
       })
@@ -164,9 +165,10 @@ export default (userRepo) => {
 
   const deleteUser = (req, res) => {
     const id = req.params.id
-    const deletedUser = userRepo.deleteUser(id)
+    const deletedUser = JSON.parse(JSON.stringify(userRepo.deleteUser(id)))
 
     if(deletedUser){
+      deletedUser.birthDate = moment(deletedUser.birthDate).format('YYYY-MM-DD')
       return res.send({
         meta: {
           _deleted: deletedUser
