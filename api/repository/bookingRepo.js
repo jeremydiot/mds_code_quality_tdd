@@ -30,19 +30,42 @@ export default (Booking, Book, User) =>{
   }
 
   const createBooking = (booking) => {
-   //TODO to implement 
+    bookings.push(new Booking(
+      booking.id,
+      booking.rentDate,
+      booking.returnDate,
+      booking.item,
+      booking.user
+    ))
+    return booking
   }
 
   const findBooking = (id) => {
-    //TODO to implement 
+    return bookings.find(b => b.id === id) || null
   }
 
-  const updateBooking = (booking) => {
-    //TODO to implement 
+  const updateBooking = (id ,booking) => {
+    let foundBookingIdx = bookings.findIndex(b => b.id === id)
+
+    if(foundBookingIdx > -1){
+      bookings[foundBookingIdx] = new Booking(
+        id,
+        booking.rentDate,
+        booking.returnDate,
+        booking.item,
+        booking.user
+      )
+      return bookings[foundBookingIdx]
+    }
+    return null
   }
 
-  const deleteBooking = (booking) => {
-    //TODO to implement 
+  const deleteBooking = (id) => {
+    let bookingToDeleteIndex = bookings.findIndex(b => b.id === id)
+    if(bookingToDeleteIndex < 0) return null
+
+    let deletedBooking = bookings.splice(bookingToDeleteIndex, 1)
+    return deletedBooking[0]
   }
 
   return {
