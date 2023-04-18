@@ -179,6 +179,25 @@ describe('Bookings', function(){
       done()
     })
   })
+  it('POST /bookings should return a bad request if book is already rented', function(done){
+    const booking = {
+      item:  "9782746035966",
+      rentDate: "2023-04-04",
+      user: "fe523f18-6b19-44e0-b156-446edc0e6862"
+    }
+    chai.request(api)
+    .post('/bookings')
+    .send(booking)
+    .end((_, res) => {
+      chai.expect(res.statusCode).to.equal(400)
+      chai.expect(res.body).to.deep.equal({
+      error: {
+        message: 'Livre 9782746035966 déjà loué'
+      }
+      })
+      done()
+    })
+  })
 
   it('GET /bookings/:id should return a success response with founded booking', function(done){
     chai.request(api)

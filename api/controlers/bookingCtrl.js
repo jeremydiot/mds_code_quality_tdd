@@ -67,6 +67,14 @@ export default (bookingRepo, userRepo, bookRepo) => {
       })
     }
 
+    if (bookingRepo.listBookings().find(b => b.item.isbn13 === req.body.item)){
+      return res.status(400).send({
+        error: {
+          message: `Livre ${req.body.item} déjà loué`
+        }
+      })
+    }
+
     const booking = JSON.parse(JSON.stringify(bookingRepo.createBooking(data)))
 
     booking.rentDate = moment(booking.rentDate).format('YYYY-MM-DD')
